@@ -1,0 +1,189 @@
+local Tab = Window:Tab({
+    Title = "Tab Title",
+    Icon = "bird", -- optional
+})
+WindUI:Notify({
+    Title = "Success",
+    Content = "Operation completed successfully",
+    Duration = 3
+})
+local Section = Tab:Section({
+    Title = "General Settings"
+})
+ 
+Section:Button({ Title = "Button in Section" })
+Section:Toggle({ Title = "Toggle in Section" })
+local Button = Tab:Button({
+    Title = "Click Me",
+    Desc = "Button description", -- optional
+    Icon = "mouse-pointer-click", -- lucide icon or "rbxassetid://". optional
+    IconAlign = "Right", -- "Left" or "Right". optional
+    Color = Color3.fromRGB(100, 100, 255), -- custom color. optional
+    Locked = false, -- disable button. optional
+    LockedTitle = "Locked", -- text shown when locked. optional
+    Justify = "Between", -- "Between" or "Center". optional
+    Flag = "my_button", -- for config saving. optional
+    Callback = function()
+        print("Clicked!")
+    end
+})
+local Toggle = Tab:Toggle({
+    Title = "Enable Feature",
+    Desc = "Toggle description", -- optional
+    Icon = "power", -- lucide icon or "rbxassetid://". optional
+    Value = false, -- initial state. optional
+    Type = "Toggle", -- "Toggle" or "Checkbox". optional
+    Color = Color3.fromRGB(100, 200, 100), -- custom color. optional
+    Locked = false, -- disable toggle. optional
+    Flag = "my_toggle", -- for config saving. optional
+    Callback = function(state)
+        print("State changed:", state)
+    end
+})
+local Slider = Tab:Slider({
+    Title = "Effect Strength",
+    Desc = "Slider description", -- optional
+    Value = {
+        Min = 0, -- minimum value
+        Max = 100, -- maximum value
+        Default = 50 -- initial value
+    },
+    Step = 1, -- increment step (use 0.1 for floats). optional
+    Locked = false, -- disable slider. optional
+    Flag = "my_slider", -- for config saving. optional
+    Callback = function(value)
+        print("Value changed:", value)
+    end
+})
+local Input = Tab:Input({
+    Title = "Username",
+    Desc = "Enter your username", -- optional
+    Icon = "user", -- lucide icon or "rbxassetid://". optional
+    Type = "Default", -- "Default" or "Textarea". optional
+    Placeholder = "Type here...", -- placeholder text. optional
+    Value = "", -- initial value. optional
+    Locked = false, -- disable input. optional
+    Flag = "my_input", -- for config saving. optional
+    Callback = function(text)
+        print("Text entered:", text)
+    end
+})
+local Dropdown = Tab:Dropdown({
+    Title = "Select Option",
+    Desc = "Dropdown description",
+    Values = {
+        "Option 1",
+        "Option 2",
+        "Option 3",
+        "Option 4"
+    },
+    Value = "Option 1",
+    Multi = false,
+    Locked = false,
+    Flag = "my_dropdown",
+    Callback = function(selected)
+        print("Selected:", selected)
+    end
+})
+local AdvancedDropdown = Tab:Dropdown({
+    Title = "Advanced Values",
+    Values = {
+        {
+            Title = "New file",
+            Desc = "Create a new file",
+            Icon = "file-plus",
+            Callback = function()
+                print("Clicked 'New file'")
+            end
+        },
+        {
+            Title = "Copy link",
+            Desc = "Copy the file link",
+            Icon = "copy",
+            Callback = function()
+                print("Clicked 'Copy link'")
+            end
+        },
+        {
+            Title = "Edit file",
+            Desc = "Allows you to edit the file",
+            Icon = "file-pen",
+            Callback = function()
+                print("Clicked 'Edit file'")
+            end
+        },
+        {
+            Type = "Divider",
+        },
+        {
+            Title = "Delete file",
+            Desc = "Permanently delete the file",
+            Icon = "trash",
+            Callback = function()
+                print("Clicked 'Delete file'")
+            end
+        },
+    }
+})
+Tab:Paragraph({
+    Title = "Info",
+    Desc = "Basic paragraph text"
+})
+local Keybind = Tab:Keybind({
+    Title = "Toggle UI",
+    Desc = "Press this key to toggle the UI", -- optional
+    Value = "V", -- default key. optional
+    Locked = false, -- disable keybind. optional
+    Flag = "toggle_ui_key", -- for config saving. optional
+    Callback = function(key)
+        print("Keybind activated, key:", key)
+    end
+})
+local Colorpicker = Tab:Colorpicker({
+    Title = "Select Color",
+    Desc = "Pick a color", -- optional
+    Default = Color3.fromRGB(255, 100, 100), -- default color. optional
+    Locked = false, -- disable colorpicker. optional
+    Flag = "custom_color", -- for config saving. optional
+    Callback = function(color)
+        print("Selected color:", color)
+    end
+})
+Tab:Code({
+    Title = "Example Code",
+    Code = "local x = 10\\nprint(x)",
+    OnCopy = function()
+        print("Code copied to clipboard")
+    end
+})
+
+Tab:Paragraph({
+    Title = "Basic Features",
+    Desc = "Core functionality"
+})
+ 
+Tab:Button({ Title = "Feature 1" })
+Tab:Button({ Title = "Feature 2" })
+ 
+Tab:Divider()
+ 
+Tab:Paragraph({
+    Title = "Advanced Features",
+    Desc = "Expert options"
+})
+ 
+Tab:Button({ Title = "Feature 3" })
+Tab:Button({ Title = "Feature 4" })
+Tab:Button({ Title = "Save" })
+Tab:Button({ Title = "Cancel" })
+ 
+Tab:Space({ Columns = 2 })
+ 
+Tab:Button({ Title = "Delete" })
+
+-- importatnt under 
+local Group = Tab:Group({})
+ 
+Group:Button({ Title = "Button 1" })
+Group:Button({ Title = "Button 2" })
+Group:Button({ Title = "Button 3" })
